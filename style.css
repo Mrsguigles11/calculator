@@ -1,0 +1,23 @@
+
+.display {
+    background-color: grey;
+    height: 150px;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.buttonsContainer {
+    display: flex;
+    flex-grow: 1;
+    flex-basis: 30%;
+    flex-wrap: wrap;
+}
+
+.calculator {
+    width: 700px;
+    height: 800px;
+}
