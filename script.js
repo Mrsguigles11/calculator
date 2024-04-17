@@ -23,18 +23,17 @@ function operate(a, oper, b) {
     return oper(a, b);
 }
 
-let numberButtons = document.querySelectorAll(".number");
-let display = document.querySelector(".display");
+const numberButtons = document.querySelectorAll(".number");
+const display = document.querySelector(".display");
 
 for (const btn of numberButtons) {
     btn.addEventListener('click', () => {
         display.textContent += btn.textContent;
         currentNumber += btn.textContent;
-        console.log(currentNumber);
     } )
 }
 
-let operatorButtons = document.querySelectorAll(".operator");
+const operatorButtons = document.querySelectorAll(".operator");
 
 for (const btn of operatorButtons) {
     btn.addEventListener('click', () => {
@@ -45,3 +44,24 @@ for (const btn of operatorButtons) {
         display.textContent = "";
     })
 }
+
+const equalsButton = document.querySelector(".equals");
+
+equalsButton.addEventListener('click', () => {
+    currentNumber = parseInt(currentNumber);
+    if (operator === "+") {
+        display.textContent = operate(storedNumber, add, currentNumber);
+    }
+
+    else if (operator === "−") {
+        display.textContent = operate(storedNumber, subtract, currentNumber);
+    }
+
+    else if (operator === "÷") {
+        display.textContent = operate(storedNumber, divide, currentNumber);
+    }
+
+    else if (operator === "×") {
+        display.textContent = operate(storedNumber, multiply, currentNumber);
+    }
+})
