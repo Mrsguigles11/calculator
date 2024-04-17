@@ -73,3 +73,10 @@ clearButton.addEventListener('click', () => {
     currentNumber = "";
     storedNumber = 0;
 })
+
+const backspaceButton = document.querySelector(".backspace");
+
+backspaceButton.addEventListener('click', () => {
+    currentNumber = currentNumber.slice(0, -1);
+    display.textContent = currentNumber;
+})
