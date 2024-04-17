@@ -65,3 +65,11 @@ equalsButton.addEventListener('click', () => {
         display.textContent = operate(storedNumber, multiply, currentNumber);
     }
 })
+
+const clearButton = document.querySelector(".clear");
+
+clearButton.addEventListener('click', () => {
+    display.textContent = "";
+    currentNumber = "";
+    storedNumber = 0;
+})
