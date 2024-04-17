@@ -1,7 +1,7 @@
 
-let firstNumber = 0;
+let currentNumber = "";
 let operator = "";
-let secondNumber = 0;
+let storedNumber = 0;
 
 function add(a, b) {
     return a + b;
@@ -23,4 +23,13 @@ function operate(a, oper, b) {
     return oper(a, b);
 }
 
-console.log(operate(2, subtract, 4));
+let numberButton = document.querySelectorAll(".number");
+let display = document.querySelector(".display");
+
+for (const btn of numberButton) {
+    btn.addEventListener('click', () => {
+        display.textContent += btn.textContent;
+        currentNumber += btn.textContent;
+        console.log(currentNumber);
+    } )
+}
