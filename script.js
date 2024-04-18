@@ -86,6 +86,10 @@ backspaceButton.addEventListener('click', () => {
 const decimalButton = document.querySelector(".decimal");
 
 decimalButton.addEventListener('click', () => {
+        if (display.textContent.includes(decimalButton.textContent)) {
+            return
+        }
+        else {
     display.textContent += decimalButton.textContent;
-    currentNumber += decimalButton.textContent;
-})
+    currentNumber += decimalButton.textContent; }}
+)
