@@ -37,7 +37,7 @@ const operatorButtons = document.querySelectorAll(".operator");
 
 for (const btn of operatorButtons) {
     btn.addEventListener('click', () => {
-        currentNumber = parseInt(currentNumber);
+        currentNumber = parseFloat(currentNumber);
         storedNumber = currentNumber;
         currentNumber = "";
         operator = btn.textContent;
@@ -48,9 +48,11 @@ for (const btn of operatorButtons) {
 const equalsButton = document.querySelector(".equals");
 
 equalsButton.addEventListener('click', () => {
-    currentNumber = parseInt(currentNumber);
+    currentNumber = parseFloat(currentNumber);
     if (operator === "+") {
-        display.textContent = operate(storedNumber, add, currentNumber);
+        let result = operate(storedNumber, add, currentNumber);
+        display.textContent = result;
+        storedNumber = result;
     }
 
     else if (operator === "−") {
@@ -79,4 +81,11 @@ const backspaceButton = document.querySelector(".backspace");
 backspaceButton.addEventListener('click', () => {
     currentNumber = currentNumber.slice(0, -1);
     display.textContent = currentNumber;
+})
+
+const decimalButton = document.querySelector(".decimal");
+
+decimalButton.addEventListener('click', () => {
+    display.textContent += decimalButton.textContent;
+    currentNumber += decimalButton.textContent;
 })
