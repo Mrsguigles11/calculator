@@ -28,6 +28,7 @@ const display = document.querySelector(".display");
 
 for (const btn of numberButtons) {
     btn.addEventListener('click', () => {
+        display.textContent = currentNumber;
         display.textContent += btn.textContent;
         currentNumber += btn.textContent;
     } )
@@ -37,11 +38,15 @@ const operatorButtons = document.querySelectorAll(".operator");
 
 for (const btn of operatorButtons) {
     btn.addEventListener('click', () => {
+        if (currentNumber === "") {
+            operator = btn.textContent;
+        } 
+        else {
         currentNumber = parseFloat(currentNumber);
         storedNumber = currentNumber;
         currentNumber = "";
         operator = btn.textContent;
-        display.textContent = "";
+        display.textContent = ""; }
     })
 }
 
@@ -53,18 +58,28 @@ equalsButton.addEventListener('click', () => {
         let result = operate(storedNumber, add, currentNumber);
         display.textContent = result;
         storedNumber = result;
+        currentNumber = "";
     }
 
     else if (operator === "−") {
-        display.textContent = operate(storedNumber, subtract, currentNumber);
+        let result = operate(storedNumber, subtract, currentNumber);
+        display.textContent = result;
+        storedNumber = result;
+        currentNumber = "";
     }
 
     else if (operator === "÷") {
-        display.textContent = operate(storedNumber, divide, currentNumber);
+        let result = operate(storedNumber, divide, currentNumber);
+        display.textContent = result;
+        storedNumber = result;
+        currentNumber = "";
     }
 
     else if (operator === "×") {
-        display.textContent = operate(storedNumber, multiply, currentNumber);
+        let result = operate(storedNumber, multiply, currentNumber);
+        display.textContent = result;
+        storedNumber = result;
+        currentNumber = "";
     }
 })
 
