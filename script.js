@@ -28,9 +28,13 @@ const display = document.querySelector(".display");
 
 for (const btn of numberButtons) {
     btn.addEventListener('click', () => {
+        if (display.textContent.length >= 16) {
+            return
+        }
+        else {
         display.textContent = currentNumber;
         display.textContent += btn.textContent;
-        currentNumber += btn.textContent;
+        currentNumber += btn.textContent; }
     } )
 }
 
@@ -56,30 +60,66 @@ equalsButton.addEventListener('click', () => {
     currentNumber = parseFloat(currentNumber);
     if (operator === "+") {
         let result = operate(storedNumber, add, currentNumber);
-        display.textContent = result;
-        storedNumber = result;
-        currentNumber = "";
+        result = result.toString();
+            if (result.length >= 16) {
+                result = result.slice(0, 16);
+                display.textContent = result;
+                result = parseFloat(result);
+                storedNumber = result;
+                currentNumber = "";
+            }
+            else {
+            display.textContent = result;
+            storedNumber = result;
+            currentNumber = ""; }
     }
 
     else if (operator === "−") {
         let result = operate(storedNumber, subtract, currentNumber);
-        display.textContent = result;
-        storedNumber = result;
-        currentNumber = "";
+        result = result.toString();
+            if (result.length >= 16) {
+                result = result.slice(0, 16);
+                display.textContent = result;
+                result = parseFloat(result);
+                storedNumber = result;
+                currentNumber = "";
+            }
+            else {
+            display.textContent = result;
+            storedNumber = result;
+            currentNumber = ""; }
     }
 
     else if (operator === "÷") {
         let result = operate(storedNumber, divide, currentNumber);
-        display.textContent = result;
-        storedNumber = result;
-        currentNumber = "";
+        result = result.toString();
+            if (result.length >= 16) {
+                result = result.slice(0, 16);
+                display.textContent = result;
+                result = parseFloat(result);
+                storedNumber = result;
+                currentNumber = "";
+            }
+            else {
+                display.textContent = result;
+                storedNumber = result;
+                currentNumber = ""; }
     }
 
     else if (operator === "×") {
         let result = operate(storedNumber, multiply, currentNumber);
-        display.textContent = result;
-        storedNumber = result;
-        currentNumber = "";
+        result = result.toString();
+            if (result.length >= 16) {
+                result = result.slice(0, 16);
+                display.textContent = result;
+                result = parseFloat(result);
+                storedNumber = result;
+                currentNumber = "";
+            }
+            else {
+                display.textContent = result;
+                storedNumber = result;
+                currentNumber = ""; }
     }
 })
 
@@ -87,6 +127,7 @@ const clearButton = document.querySelector(".clear");
 
 clearButton.addEventListener('click', () => {
     display.textContent = "";
+    operator = "";
     currentNumber = "";
     storedNumber = 0;
 })
