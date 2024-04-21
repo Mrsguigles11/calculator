@@ -42,7 +42,31 @@ const operatorButtons = document.querySelectorAll(".operator");
 
 for (const btn of operatorButtons) {
     btn.addEventListener('click', () => {
-        if (currentNumber === "") {
+        if (currentNumber.length > 0 && storedNumber > 0) {
+            operator = btn.textContent;
+            currentNumber = parseFloat(currentNumber);
+                if (operator === "+") {
+                    display.textContent = operate(storedNumber, add, currentNumber);
+                    storedNumber = operate(storedNumber, add, currentNumber);
+                    currentNumber = "";
+                }
+                else if (operator === "−") {
+                    display.textContent = operate(storedNumber, subtract, currentNumber);
+                    storedNumber = operate(storedNumber, subtract, currentNumber);
+                    currentNumber = "";
+                }
+                else if (operator === "×") {
+                    display.textContent = operate(storedNumber, multiply, currentNumber);
+                    storedNumber = operate(storedNumber, multiply, currentNumber);
+                    currentNumber = "";
+                }
+                else if (operator === "÷") {
+                    display.textContent = operate(storedNumber, divide, currentNumber);
+                    storedNumber = operate(storedNumber, divide, currentNumber);
+                    currentNumber = "";
+                }
+        }
+        else if (currentNumber === "") {
             operator = btn.textContent;
             display.textContent = "";
         } 
