@@ -43,7 +43,6 @@ const operatorButtons = document.querySelectorAll(".operator");
 for (const btn of operatorButtons) {
     btn.addEventListener('click', () => {
         if (currentNumber.length > 0 && storedNumber > 0) {
-            operator = btn.textContent;
             currentNumber = parseFloat(currentNumber);
                 if (operator === "+") {
                     display.textContent = operate(storedNumber, add, currentNumber);
@@ -65,6 +64,7 @@ for (const btn of operatorButtons) {
                     storedNumber = operate(storedNumber, divide, currentNumber);
                     currentNumber = "";
                 }
+            operator = btn.textContent;
         }
         else if (currentNumber === "") {
             operator = btn.textContent;
