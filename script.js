@@ -44,6 +44,7 @@ for (const btn of operatorButtons) {
     btn.addEventListener('click', () => {
         if (currentNumber === "") {
             operator = btn.textContent;
+            display.textContent = "";
         } 
         else {
         currentNumber = parseFloat(currentNumber);
@@ -69,9 +70,10 @@ equalsButton.addEventListener('click', () => {
                 currentNumber = "";
             }
             else {
-            display.textContent = result;
-            storedNumber = result;
-            currentNumber = ""; }
+                result = parseFloat(result);
+                display.textContent = result;
+                storedNumber = result;
+                currentNumber = ""; }
     }
 
     else if (operator === "−") {
@@ -85,9 +87,10 @@ equalsButton.addEventListener('click', () => {
                 currentNumber = "";
             }
             else {
-            display.textContent = result;
-            storedNumber = result;
-            currentNumber = ""; }
+                result = parseFloat(result);
+                display.textContent = result;
+                storedNumber = result;
+                currentNumber = ""; }
     }
 
     else if (operator === "÷") {
@@ -101,6 +104,7 @@ equalsButton.addEventListener('click', () => {
                 currentNumber = "";
             }
             else {
+                result = parseFloat(result);
                 display.textContent = result;
                 storedNumber = result;
                 currentNumber = ""; }
@@ -117,6 +121,7 @@ equalsButton.addEventListener('click', () => {
                 currentNumber = "";
             }
             else {
+                result = parseFloat(result);
                 display.textContent = result;
                 storedNumber = result;
                 currentNumber = ""; }
