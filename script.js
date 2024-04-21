@@ -32,9 +32,9 @@ for (const btn of numberButtons) {
             return
         }
         else {
-        display.textContent = currentNumber;
-        display.textContent += btn.textContent;
-        currentNumber += btn.textContent; }
+            display.textContent = currentNumber;
+            display.textContent += btn.textContent;
+            currentNumber += btn.textContent; }
     } )
 }
 
@@ -47,35 +47,36 @@ for (const btn of operatorButtons) {
                 if (operator === "+") {
                     display.textContent = operate(storedNumber, add, currentNumber);
                     storedNumber = operate(storedNumber, add, currentNumber);
-                    currentNumber = "";
                 }
                 else if (operator === "−") {
                     display.textContent = operate(storedNumber, subtract, currentNumber);
                     storedNumber = operate(storedNumber, subtract, currentNumber);
-                    currentNumber = "";
                 }
                 else if (operator === "×") {
                     display.textContent = operate(storedNumber, multiply, currentNumber);
                     storedNumber = operate(storedNumber, multiply, currentNumber);
-                    currentNumber = "";
                 }
                 else if (operator === "÷") {
-                    display.textContent = operate(storedNumber, divide, currentNumber);
-                    storedNumber = operate(storedNumber, divide, currentNumber);
-                    currentNumber = "";
-                }
+                    if (currentNumber === 0) {
+                        display.textContent = "No can do!"
+                    }
+                    else {
+                        display.textContent = operate(storedNumber, divide, currentNumber);
+                        storedNumber = operate(storedNumber, divide, currentNumber); }
+                } 
             operator = btn.textContent;
+            currentNumber = "";
         }
         else if (currentNumber === "") {
             operator = btn.textContent;
             display.textContent = "";
         } 
         else {
-        currentNumber = parseFloat(currentNumber);
-        storedNumber = currentNumber;
-        currentNumber = "";
-        operator = btn.textContent;
-        display.textContent = ""; }
+            currentNumber = parseFloat(currentNumber);
+            storedNumber = currentNumber;
+            currentNumber = "";
+            operator = btn.textContent;
+            display.textContent = ""; }
     })
 }
 
@@ -91,13 +92,11 @@ equalsButton.addEventListener('click', () => {
                 display.textContent = result;
                 result = parseFloat(result);
                 storedNumber = result;
-                currentNumber = "";
             }
             else {
                 result = parseFloat(result);
                 display.textContent = result;
-                storedNumber = result;
-                currentNumber = ""; }
+                storedNumber = result; }
     }
 
     else if (operator === "−") {
@@ -108,31 +107,31 @@ equalsButton.addEventListener('click', () => {
                 display.textContent = result;
                 result = parseFloat(result);
                 storedNumber = result;
-                currentNumber = "";
             }
             else {
                 result = parseFloat(result);
                 display.textContent = result;
-                storedNumber = result;
-                currentNumber = ""; }
+                storedNumber = result; }
     }
 
     else if (operator === "÷") {
-        let result = operate(storedNumber, divide, currentNumber);
-        result = result.toString();
-            if (result.length >= 16) {
-                result = result.slice(0, 16);
-                display.textContent = result;
-                result = parseFloat(result);
-                storedNumber = result;
-                currentNumber = "";
-            }
-            else {
-                result = parseFloat(result);
-                display.textContent = result;
-                storedNumber = result;
-                currentNumber = ""; }
-    }
+        if (currentNumber === 0) {
+            display.textContent = "No can do!"
+        }
+        else {
+            let result = operate(storedNumber, divide, currentNumber);
+            result = result.toString();
+                if (result.length >= 16) {
+                    result = result.slice(0, 16);
+                    display.textContent = result;
+                    result = parseFloat(result);
+                    storedNumber = result;
+                }
+                else {
+                    result = parseFloat(result);
+                    display.textContent = result;
+                    storedNumber = result; }
+    } }
 
     else if (operator === "×") {
         let result = operate(storedNumber, multiply, currentNumber);
@@ -142,14 +141,14 @@ equalsButton.addEventListener('click', () => {
                 display.textContent = result;
                 result = parseFloat(result);
                 storedNumber = result;
-                currentNumber = "";
             }
             else {
                 result = parseFloat(result);
                 display.textContent = result;
-                storedNumber = result;
-                currentNumber = ""; }
+                storedNumber = result; }
     }
+    operator = "";
+    currentNumber = "";
 })
 
 const clearButton = document.querySelector(".clear");
@@ -171,10 +170,10 @@ backspaceButton.addEventListener('click', () => {
 const decimalButton = document.querySelector(".decimal");
 
 decimalButton.addEventListener('click', () => {
-        if (display.textContent.includes(decimalButton.textContent)) {
-            return
+    if (display.textContent.includes(decimalButton.textContent)) {
+        return
         }
-        else {
-    display.textContent += decimalButton.textContent;
-    currentNumber += decimalButton.textContent; }}
+    else {
+        display.textContent += decimalButton.textContent;
+        currentNumber += decimalButton.textContent; }}
 )
