@@ -170,10 +170,12 @@ clearButton.addEventListener('click', () => {
 
 const backspaceButton = document.querySelector(".backspace");
 
-backspaceButton.addEventListener('click', () => {
+backspaceButton.addEventListener('click', pressBackspace);
+    
+function pressBackspace() {
     currentNumber = currentNumber.slice(0, -1);
-    display.textContent = currentNumber;
-})
+    display.textContent = currentNumber; }
+
 
 const decimalButton = document.querySelector(".decimal");
 
@@ -220,6 +222,9 @@ function checkKey(evt) {
     }
     else if (evt.keyCode === 106) {
         doSum("×");
+    }
+    else if (evt.keyCode === 8) {
+        pressBackspace();
     }
     } 
 
