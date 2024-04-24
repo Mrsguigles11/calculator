@@ -27,16 +27,20 @@ const numberButtons = document.querySelectorAll(".number");
 const display = document.querySelector(".display");
 
 for (const btn of numberButtons) {
-    btn.addEventListener('click', () => {
-        if (display.textContent.length >= 14) {
-            return
-        }
-        else {
-            display.textContent = currentNumber;
-            display.textContent += btn.textContent;
-            currentNumber += btn.textContent; }
-    } )
-}
+    btn.addEventListener('click', function() {
+        pressNumber(btn.textContent);
+    })} 
+    
+function pressNumber(num) {
+    if (display.textContent.length >= 14) {
+        return
+    }
+    else {
+        display.textContent = currentNumber;
+        display.textContent += num;
+        currentNumber += num; }
+    } 
+
 
 const operatorButtons = document.querySelectorAll(".operator");
 
@@ -185,50 +189,26 @@ decimalButton.addEventListener('click', () => {
 window.addEventListener('keydown', checkKey);
 
 function checkKey(evt) {
-    if (display.textContent.length >= 14) {
-        return
-    }
-    else if ((evt.keyCode === 49) || (evt.keyCode === 97)) {
-        display.textContent = currentNumber;
-        display.textContent += "1";
-        currentNumber += "1"; } 
+    if ((evt.keyCode === 49) || (evt.keyCode === 97)) {
+        pressNumber("1"); } 
     else if ((evt.keyCode === 50) || (evt.keyCode === 98)) {
-        display.textContent = currentNumber;
-        display.textContent += "2";
-        currentNumber += "2"; }
+        pressNumber("2"); }
     else if ((evt.keyCode === 51) || (evt.keyCode === 99)) {
-        display.textContent = currentNumber;
-        display.textContent += "3";
-        currentNumber += "3";
-    }
+        pressNumber("3");;}
     else if ((evt.keyCode === 52) || (evt.keyCode === 100)) {
-        display.textContent = currentNumber;
-        display.textContent += "4";
-        currentNumber += "4"; }
+        pressNumber("4"); }
     else if ((evt.keyCode === 53) || (evt.keyCode === 101)) {
-        display.textContent = currentNumber;
-        display.textContent += "5";
-        currentNumber += "5"; }
+        pressNumber("5"); }
     else if ((evt.keyCode === 54) || (evt.keyCode === 102)) {
-        display.textContent = currentNumber;
-        display.textContent += "6";
-        currentNumber += "6"; }
+        pressNumber("6"); }
     else if ((evt.keyCode === 55) || (evt.keyCode === 103)) {
-        display.textContent = currentNumber;
-        display.textContent += "7";
-        currentNumber += "7"; }
+        pressNumber("7"); }
     else if ((evt.keyCode === 56) || (evt.keyCode === 104)) {
-        display.textContent = currentNumber;
-        display.textContent += "8";
-        currentNumber += "8"; }
+        pressNumber("8"); }
     else if ((evt.keyCode === 57) || (evt.keyCode === 105)) {
-        display.textContent = currentNumber;
-        display.textContent += "9";
-        currentNumber += "9"; }
+        pressNumber("9"); }
     else if ((evt.keyCode === 48) || (evt.keyCode === 96)) {
-        display.textContent = currentNumber;
-        display.textContent += "0";
-        currentNumber += "0"; }
+        pressNumber("0"); }
     else if (evt.keyCode === 107) {
         doSum("+");
     }
@@ -242,4 +222,6 @@ function checkKey(evt) {
         doSum("×");
     }
     } 
+
+
 
