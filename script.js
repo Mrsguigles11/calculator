@@ -179,14 +179,18 @@ function pressBackspace() {
 
 const decimalButton = document.querySelector(".decimal");
 
-decimalButton.addEventListener('click', () => {
-    if (display.textContent.includes(decimalButton.textContent)) {
+decimalButton.addEventListener('click', function() {
+    pressDecimal(decimalButton.textContent);
+})
+
+function pressDecimal(decimal) {
+    if (display.textContent.includes(decimal)) {
         return
         }
     else {
-        display.textContent += decimalButton.textContent;
-        currentNumber += decimalButton.textContent; }}
-)
+        display.textContent += decimal;
+        currentNumber += decimal; }}
+
 
 window.addEventListener('keydown', checkKey);
 
@@ -225,6 +229,9 @@ function checkKey(evt) {
     }
     else if (evt.keyCode === 8) {
         pressBackspace();
+    }
+    else if ((evt.keyCode === 110) || (evt.keyCode === 190)) {
+        pressDecimal(".");
     }
     } 
 
