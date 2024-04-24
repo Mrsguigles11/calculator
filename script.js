@@ -90,7 +90,9 @@ function doSum(input) {
 
 const equalsButton = document.querySelector(".equals");
 
-equalsButton.addEventListener('click', () => {
+equalsButton.addEventListener('click', pressEquals);
+
+function pressEquals()  {
     currentNumber = parseFloat(currentNumber);
     if (operator === "+") {
         let result = operate(storedNumber, add, currentNumber);
@@ -157,16 +159,18 @@ equalsButton.addEventListener('click', () => {
     }
     operator = "";
     currentNumber = "";
-})
+}
 
 const clearButton = document.querySelector(".clear");
 
-clearButton.addEventListener('click', () => {
+clearButton.addEventListener('click', pressClear);
+
+function pressClear() {
     display.textContent = "";
     operator = "";
     currentNumber = "";
     storedNumber = 0;
-})
+}
 
 const backspaceButton = document.querySelector(".backspace");
 
@@ -232,6 +236,12 @@ function checkKey(evt) {
     }
     else if ((evt.keyCode === 110) || (evt.keyCode === 190)) {
         pressDecimal(".");
+    }
+    else if (evt.keyCode === 13) {
+        pressEquals();
+    }
+    else if (evt.keyCode === 27) {
+        pressClear();
     }
     } 
 
