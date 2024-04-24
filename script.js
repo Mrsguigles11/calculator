@@ -41,7 +41,12 @@ for (const btn of numberButtons) {
 const operatorButtons = document.querySelectorAll(".operator");
 
 for (const btn of operatorButtons) {
-    btn.addEventListener('click', () => {
+    btn.addEventListener('click', function() {
+        doSum(btn.textContent);
+    })
+}
+    
+function doSum(input) {
         if (currentNumber.length > 0 && storedNumber > 0) {
             currentNumber = parseFloat(currentNumber);
                 if (operator === "+") {
@@ -64,21 +69,20 @@ for (const btn of operatorButtons) {
                         display.textContent = operate(storedNumber, divide, currentNumber);
                         storedNumber = operate(storedNumber, divide, currentNumber); }
                 } 
-            operator = btn.textContent;
+            operator = input;
             currentNumber = "";
         }
         else if (currentNumber === "") {
-            operator = btn.textContent;
+            operator = input;
             display.textContent = "";
         } 
         else {
             currentNumber = parseFloat(currentNumber);
             storedNumber = currentNumber;
             currentNumber = "";
-            operator = btn.textContent;
+            operator = input;
             display.textContent = ""; }
-    })
-}
+    }
 
 const equalsButton = document.querySelector(".equals");
 
@@ -195,7 +199,8 @@ function checkKey(evt) {
     else if ((evt.keyCode === 51) || (evt.keyCode === 99)) {
         display.textContent = currentNumber;
         display.textContent += "3";
-        currentNumber += "3"; }
+        currentNumber += "3";
+    }
     else if ((evt.keyCode === 52) || (evt.keyCode === 100)) {
         display.textContent = currentNumber;
         display.textContent += "4";
@@ -224,5 +229,17 @@ function checkKey(evt) {
         display.textContent = currentNumber;
         display.textContent += "0";
         currentNumber += "0"; }
+    else if (evt.keyCode === 107) {
+        doSum("+");
+    }
+    else if (evt.keyCode === 109) {
+        doSum("−");
+    }
+    else if (evt.keyCode === 111) {
+        doSum("÷");
+    }
+    else if (evt.keyCode === 106) {
+        doSum("×");
+    }
     } 
 
